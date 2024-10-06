@@ -1,5 +1,6 @@
 PATCH  http://localhost:8080/api/v1/events/1
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyMzRAbWFpbC5jb20iLCJleHAiOjE3MjgyNDE5ODcsInVzZXJJZCI6MX0.A-Tozx3boWxjxZB6VXUNqQV2m7bmA8yX9cToF_Ax2oA
 
 {
      

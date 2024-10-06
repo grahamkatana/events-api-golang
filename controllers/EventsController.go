@@ -33,6 +33,8 @@ func CreateEvent(ctx *gin.Context) {
 		})
 		return
 	}
+	id := ctx.GetUint("userId")
+	event.UserID = id
 	err = event.Save()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{
@@ -71,6 +73,7 @@ func GetEvent(ctx *gin.Context) {
 }
 
 func UpdateEvent(ctx *gin.Context) {
+	userId := ctx.GetUint("userId")
 	id, err := strconv.ParseUint(ctx.Param("id"), 10, 32)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
@@ -84,6 +87,13 @@ func UpdateEvent(ctx *gin.Context) {
 		ctx.JSON(http.StatusNotFound, gin.H{
 			"message": "error",
 			"data":    err.Error(),
+		})
+		return
+	}
+	if event.UserID != userId {
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"message": "error",
+			"data":    "you are not authorized to update this event",
 		})
 		return
 	}
@@ -114,6 +124,7 @@ func UpdateEvent(ctx *gin.Context) {
 }
 
 func DeleteEvent(ctx *gin.Context) {
+	userId := ctx.GetUint("userId")
 	id, err := strconv.ParseUint(ctx.Param("id"), 10, 32)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
@@ -127,6 +138,13 @@ func DeleteEvent(ctx *gin.Context) {
 		ctx.JSON(http.StatusNotFound, gin.H{
 			"message": "error",
 			"data":    err.Error(),
+		})
+		return
+	}
+	if event.UserID != userId {
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"message": "error",
+			"data":    "you are not authorized to delete this event",
 		})
 		return
 	}
