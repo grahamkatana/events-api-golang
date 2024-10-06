@@ -37,7 +37,7 @@ func BookEvent(ctx *gin.Context) {
 		})
 		return
 	}
-	ctx.JSON(http.StatusOK, gin.H{
+	ctx.JSON(http.StatusCreated, gin.H{
 		"message": "success",
 		"data":    eventRegistration,
 	})
