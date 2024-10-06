@@ -9,3 +9,7 @@
 install http-clients vs code
 then in api-test you can run API endpoints
 
+#### Running the tests
+- docker build -t go-events-api .
+- docker run -p 3050:3050 go-events-api
+

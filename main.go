@@ -14,7 +14,7 @@ func main() {
 	server.GET("/", healthCheck)
 	routes.BootstrapAuthApiRoutes(server)
 	routes.BootstrapApiRoutes(server)
-	server.Run(":8080")
+	server.Run(":3050")
 
 }
 
