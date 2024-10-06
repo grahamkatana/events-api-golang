@@ -1,0 +1,12 @@
+PATCH  http://localhost:8080/api/events/1
+Content-Type: application/json
+
+{
+     
+    "title":"First event updated",
+    "description":"Test event description",
+    "date":"2025-01-01T15:30:00.000Z",
+    "location":"This is a test location",
+    "userid":"1"
+    
+}
