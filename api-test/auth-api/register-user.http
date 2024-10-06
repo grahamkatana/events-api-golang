@@ -5,6 +5,6 @@ Content-Type: application/json
      
     "name":"First User",
     "password":"Test12345",
-    "email":"test2@mail.com"
+    "email":"test234@mail.com"
     
 }

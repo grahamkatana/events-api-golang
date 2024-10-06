@@ -63,3 +63,23 @@ func CheckPassword(email string, password string) error {
 	}
 	return nil
 }
+
+func GetUserByEmail(email string) (*User, error) {
+	query := `
+		SELECT id, name, email, password
+		FROM users
+		WHERE email = ?
+	`
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return nil, err
+	}
+	defer stmt.Close()
+	row := stmt.QueryRow(email)
+	var user User
+	err = row.Scan(&user.ID, &user.Name, &user.Email, &user.Password)
+	if err != nil {
+		return nil, err
+	}
+	return &user, nil
+}
