@@ -7,12 +7,20 @@ import (
 )
 
 func BootstrapApiRoutes(server *gin.Engine) {
-	api := server.Group("/api")
+	api := server.Group("/api/v1")
 	{
 		api.GET("/events", controllers.GetEvents)
 		api.GET("/events/:id", controllers.GetEvent)
 		api.POST("/events", controllers.CreateEvent)
 		api.PATCH("/events/:id", controllers.UpdateEvent)
 		api.DELETE("/events/:id", controllers.DeleteEvent)
+	}
+}
+
+func BootstrapAuthApiRoutes(server *gin.Engine) {
+	api := server.Group("/api/v1/auth")
+	{
+		api.POST("/login", controllers.Login)
+		api.POST("/register", controllers.Register)
 	}
 }

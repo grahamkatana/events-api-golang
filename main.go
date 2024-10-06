@@ -12,6 +12,7 @@ func main() {
 	db.InitDB()
 	server := gin.Default()
 	server.GET("/", healthCheck)
+	routes.BootstrapAuthApiRoutes(server)
 	routes.BootstrapApiRoutes(server)
 	server.Run(":8080")
 
