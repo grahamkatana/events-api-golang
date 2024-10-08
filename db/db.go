@@ -23,7 +23,6 @@ func InitDB() {
 
 	// Build connection string
 	connString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPass, dbHost, dbPort, dbName)
-	fmt.Println(connString)
 
 	DB, err = sql.Open("mysql", connString)
 	if err != nil {
